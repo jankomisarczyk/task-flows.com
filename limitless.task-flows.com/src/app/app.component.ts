@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'limitless.task-flows.com 222';
+  title = 'limitless.task-flows.com works!';
 }

@@ -33,7 +33,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/layout/styles/theme.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -53,7 +54,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"

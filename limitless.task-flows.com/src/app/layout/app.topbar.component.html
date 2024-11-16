@@ -1,0 +1,32 @@
+<div class="layout-topbar">
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-arrow-right"></i>
+    </button>
+
+    <div class="layout-topbar-logo">
+        <span>a reason for being</span>
+    </div>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+    
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-github"></i>
+            <span>Github</span>
+        </button>
+        <button class="p-link layout-topbar-button">
+            <i class="pi pi-linkedin"></i>
+            <span>Linkedin</span>
+        </button>
+        <a class="p-link layout-topbar-button" target="_blank" href="assets/demo/pdfs/JanKomisarczyk.pdf">
+            <i class="pi pi-youtube"></i>
+            <span>YouTube</span>
+        </a>
+        <button class="p-link layout-topbar-button" [routerLink]="['']">
+            <i class="pi pi-youtube"></i>
+            <span>YouTube</span>
+        </button>
+    </div>
+</div>

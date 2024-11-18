@@ -98,7 +98,7 @@ export class AppMenuComponent implements OnInit {
             routerLink: ['/hobby/playlist'],
           },
           {
-            label: 'Book Recommendations',
+            label: 'Books',
             icon: 'pi pi-fw pi-book',
             routerLink: ['/hobby/books'],
           },

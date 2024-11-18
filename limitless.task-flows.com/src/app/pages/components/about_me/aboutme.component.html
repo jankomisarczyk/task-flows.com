@@ -1,82 +1,69 @@
 
 <div class="container">
-    <section id="IKIGAI">
-        <div class="background" [@videoAnimation]="state">
-            <video autoplay="true" muted="true" loop="true" >
-                <source src="ocean.mp4"/>
-            </video>
-            <div class="ikigai" >
-                <img [@logoAnimation]="state2" src="assets/layout/images/ikigai.png">
+  <section id="IKIGAI">
+      <div class="background" [@videoAnimation]="state">
+          <video autoplay="true" muted="true" loop="true" >
+              <source src="ocean.mp4"/>
+          </video>
+          <div class="ikigai" >
+              <img [@logoAnimation]="state2" src="assets/layout/images/ikigai.png">
+          </div>
+          <div class="ikigai-japanese" >
+              <img [@japaneseAnimation]="state3" src="assets/layout/images/japanese-ikigai.png">
+          </div>
+      </div>
+  </section>
+  <section >
+      <div class="post-head">
+        <div class="container">
+          <div class="row">
+            <div class="col col-6 col-t-12">
+              <div class="image-box">
+                <img class="post-image lazy loaded" alt="The way I sWho am I?" src="assets/layout/images/My-Ikigai.png">
+              </div>
             </div>
-            <div class="ikigai-japanese" >
-                <img [@japaneseAnimation]="state3" src="assets/layout/images/japanese-ikigai.png">
+            <div class="col col-6 col-t-12">
+              <div class="post-head__box">
+                <h2 class="post__title">Who am I?</h2>
+              </div>
             </div>
+          </div>
         </div>
-
-    </section>
-    <section id="second">
-        <article class="Venn">
-            <h2>Stock Model</h2>
-            <div class="circle one">
-              <span></span>
-              <span></span>
-              <h3>One</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis
-                ligula, a vulputate nibh porttitor eu. Morbi tempus dolor sed lectus gravida, id convallis ipsum convallis. Cras nec pharetra est, nec finibus lectus. Donec pulvinar ipsum arcu, sit amet pulvinar augue luctus quis.
-              </p>
+      </div>
+      <div class="container">
+        <article class="post">
+          <div class="post__content">
+            <p>
+              I thought that the best way to answer 'Who am I?' question is to explain my sense of purpose, which is Japanese conecpt widely know under a term IKIGAI. It is more than your reason for living but also a philosophy to live a life full of happiness and enjoyment.
+              It shows you your specific activites and dreams that are importontant to you and that makes you want to get up each day to turn them into rality. It is a combination of four elements:
+              1) what I love
+                I found that I enjoy exercising, expecially doing calisthenics and gymnastics (be carefull not to break neck ;)). Apart from that I find peace of mind while playing piano and reading about philosophy or econmics.
+              2) what I am good at
+                I have never had any problems with learning mathemathics and physics. These were alwayas my favourite subjects at school and I still enjoy solving math riddles or exploring beutiful and vast universe.
+              3) what I can be paid for
+                The ways through which I currently make a living is being a Software Developer professionally and a Quant after hours. I find enjoyment from both coding and doing research about misspriced stocks (value and event driven investing).
+              4) what the world needs
+                I belive that being a good person and living without violating my moral backbone is what the world needs. Apart from that I believe that in the near future we will see powerful Artificial General Inteligence and I want to be a part of the team that will make it happen.
+            </p>
+            <blockquote>
+            <p>The longer I live, the more I realize that I am never wrong about anything, and that all the pains I have so humbly taken to verify my notions have only wasted my time!</p>
+            <p><cite>George Bernard Shaw</cite></p>
+            </blockquote>
+            <p>In qun iis, quae de Sirenum cantibus finxerit potionibus.</p>
+      
+            <p><img src="assets/layout/images/My-Ikigai.png" alt="Alone with myself">
+            <em>Alone with myself / <a href="https://unsplash.com/">Unsplash</a></em></p>
+      
+            <p>Sic iantibus finxeri princi. Longum est enim ad omnia respondere.</p>
+            <div class="js-reframe" style="position: relative; width: 100%; padding-top: 50%;">
+              <iframe src="https://www.youtube.com/embed/Z9CsuNMdvLg" frameborder="0" allowfullscreen="" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;">
+              </iframe>
             </div>
-            <div class="circle two">
-              <span></span>
-              <span></span>
-              <h3>Two</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis
-                ligula, a vulputate nibh porttitor eu. Morbi tempus dolor sed lectus gravida, id convallis ipsum convallis. Cras nec pharetra est, nec finibus lectus. Donec pulvinar ipsum arcu, sit amet pulvinar augue luctus quis.
-              </p>
-            </div>
-            <div class="circle three">
-              <span></span>
-              <span></span>
-              <h3>Three</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis
-                ligula, a vulputate nibh porttitor eu. Morbi tempus dolor sed lectus gravida, id convallis ipsum convallis. Cras nec pharetra est, nec finibus lectus. Donec pulvinar ipsum arcu, sit amet pulvinar augue luctus quis.
-              </p>
-            </div>
-            <div class="shape onetwo">
-              <span></span>
-              <span></span>
-              <h3>One + Two</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis
-                ligula, a vulputate nibh porttitor eu. Morbi tempus dolor sed lectus gravida, id convallis ipsum convallis. Cras nec pharetra est, nec finibus lectus. Donec pulvinar ipsum arcu, sit amet pulvinar augue luctus quis.
-              </p>
-            </div>
-            <div class="shape onethree">
-              <span></span>
-              <span></span>
-              <h3>One + Three</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis.
-              </p>
-            </div>
-            <div class="shape twothree">
-              <span></span>
-              <span></span>
-              <h3>Two + Three</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis.
-              </p>
-            </div>
-            <div class="shape onetwothree">
-              <span></span>
-              <span></span>
-              <h3>One + Two + Three</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis magna erat, eget condimentum metus faucibus eget. Sed venenatis sem dui, quis faucibus nibh pretium a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada mattis.
-              </p>
-            </div>
-          </article>
-    </section>
+          
+            <p>Qua ex cognitione facilior facta est investigatio rerum occultissimarum. Negat enim tenuissimo victu, id est contemptissimis escis et potionibus, minorem voluptatem percipi quam rebus exquisitissimis ad epulandum. Non enim iam stirpis bonum quaeret, sed animalis. Qui autem esse poteris, nisi te amor ipse ceperit? Sic igitur in homine perfectio ista in eo potissimum, quod est optimum, id est in virtute, laudatur disputari sine.</p>
+            <p>Sin tantum modo ad indicia veteris memoriae cognoscenda, curiosorum. Haec et tu ita posuisti, et verba vestra sunt. Idemne potest esse dies saepius, qui semel fuit? Ampulla enim sit necne sit, quis non iure optimo irrideatur, si laboret? Ego vero volo in virtute vim esse quam maximam; Serpere anguiculos, nare anaticulas, evolare merulas, cornibus uti videmus boves, nepas aculeis. Archytam? Qua ex cognitione facilior facta est investiga.</p>
+          </div>
+        </article>
+      </div>
+  </section>
 </div>

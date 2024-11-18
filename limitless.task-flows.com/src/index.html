@@ -6,11 +6,30 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://unpkg.com/scrollreveal"></script>
   <!-- I need to redefine css assets -->
   <!-- <link href="https://assets-global.website-files.com/6618c3e400e0a22e8fc6b657/css/ikigai-template.webflow.430957ca8.css" rel="stylesheet" type="text/css"/> -->
   <!-- <link id="theme-css" rel="stylesheet" type="text/css" href="assets/layout/styles/theme.css"> -->
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    ScrollReveal({
+      distance: '60px',
+      duration: 2500,
+      reset: true,
+      delay: 400
+    });
+    
+    ScrollReveal().reveal('.post__title', { delay: 500, origin: 'left' });
+    ScrollReveal().reveal('.image-box', { delay: 500, origin: 'bottom' });
+    ScrollReveal().reveal('.post__content', { delay: 500, origin: 'right' });
+    ScrollReveal({
+      distance: '60px',
+      duration: 2500,
+      reset: false,
+      delay: 400
+    }).reveal('.layout-topbar-menu button', { delay: 500, origin: 'top', interval: 100});
+  </script>
 </body>
 </html>

@@ -240,6 +240,10 @@ ul,ol,dd {
     margin-left: 20px
 }
 
+ol > li::marker {
+    font-weight: bold;
+}
+
 .highlight {
     border-radius: 4px;
     color: #fff;

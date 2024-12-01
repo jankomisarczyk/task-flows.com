@@ -149,3 +149,41 @@
     left: -15px;
 
 }
+
+@media screen and (max-width: 991px) {
+    .timeline {
+        margin: 50px auto;
+    }
+
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 25px;
+
+        .icon-img {
+            left: 10px;
+        }
+    }
+
+    .text-box{
+
+        small {
+            margin-bottom: 10px;
+        }
+    }
+
+    .right {
+        left: 0;
+    }
+
+    .left-arrow, .right-arrow {
+        border-right: 15px solid #fff;
+        border-left: 0;
+        left: -15px;
+    }
+
+}

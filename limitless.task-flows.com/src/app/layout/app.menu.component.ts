@@ -85,7 +85,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Calisthenics',
             icon: 'pi pi-fw pi-wave-pulse',
-            routerLink: ['/sport/calisthenics'],
+            routerLink: ['/calisthenics'],
           },
           {
             label: 'Gym',

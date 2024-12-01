@@ -13,6 +13,13 @@ export const routes: Routes = [
             (m) => m.AboutMeComponent
           ),
       },
+      {
+        path: 'calisthenics',
+        loadComponent: () =>
+          import('./pages/components/calisthenics/calisthenics.component').then(
+            (m) => m.CalisthenicsComponent
+          ),
+      },
     ],
   },
 ];

@@ -1,0 +1,675 @@
+// @use '@angular/material' as mat;
+
+$color-white: #fff;
+$color-main: #2c2d30;
+$color-main-fade: #2c2d3000;
+$color-secondary: #171717;
+$color-secondary-fade: #17171700;
+$color-button-hover: #242629;
+$color-button-hover-fade: #24262900;
+$color-user-icon: #8e0000;
+$color-groupings: #9ca6b5;
+$color-gpt-icon: #000000;
+$color-black: #1e1e1f;
+$color-user-menu-hover: #383b42;
+$color-text: #f5f9ff;
+$color-gpt3: #0d89fb;
+$color-gpt4: #f22626;
+$color-secondary-p: #c9ccd1;
+$color-logo: #848484;
+$color-model-name: #ffffff;
+$color-assistant-bg: #3f4042;
+$color-assistant-text: #e1e6ed;
+$color-disclaimer: #d0d2e1;
+$color-border1: #484a4e;
+$color-user-menu-border: #34373a;
+$color-user-menu-selected-border: #4a5562;
+$color-border2: #292d32;
+$color-user-message-border: #2f353d;
+$color-output: #212122;
+$color-execute: #5fc319;
+
+// $theme: mat.define-theme(
+//   (
+//     color: (
+//       theme-type: light,
+//       primary: mat.$azure-palette,
+//       tertiary: mat.$blue-palette,
+//     ),
+//   )
+// );
+
+
+#body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: $color-main;
+  display: flex;
+  font-size: 1em;
+  font-family: system-ui, sans-serif;
+  // @include mat.all-component-themes($theme);
+}
+
+#sidebar {
+  position: relative;
+  left: 0;
+  background: $color-secondary;
+  width: 260px;
+  min-width: 260px;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  transition: all 0.2s ease-in-out;
+}
+
+#decomposition {
+  position: relative;
+  left: 0;
+  background: $color-output;
+  width: 350px;
+  min-width: 350px;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+
+.float-top-decomposition {
+  display: flex;
+  flex-direction: column;
+  height: calc( 100% - 150px );
+}
+
+.float-top {
+  display: flex;
+  flex-direction: column;
+  height: calc( 100% - 50px );
+}
+
+#sidebar.hidden {
+  left: -260px;
+  margin-right: -260px;
+}
+
+#sidebar.hidden .hide-sidebar {
+  left: 60px;
+  transform: rotate(180deg);
+  padding: 15px 13px 11px 13px;
+}
+
+button {
+  display: block;
+  background: inherit;
+  border: 1px solid $color-border1;
+  border-radius: 5px;
+  color: $color-white;
+  padding: 13px;
+  box-sizing: border-box;
+  text-align: left;
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+button:hover {
+  background: $color-button-hover;
+}
+
+.sidebar-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 3px;
+  button {
+    padding: 12px 13px 12px 13px;
+  }
+}
+
+.task-flow-logo {
+  display: flex;
+}
+
+
+.decomposition-of-task {
+  padding: 0px 0px 0px 13px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: $color-groupings;
+  font-size: 1.1em;
+  font-weight: bold;
+  button {
+    padding: 12px 13px 12px 13px;
+  }
+}
+
+.output {
+  flex: 1;
+  padding: 2px 26px 2px 26px;
+}
+
+.output-menu {
+  border: 1px solid $color-border1;
+  border-radius: 5px;
+  height: 150px;
+  color: $color-groupings;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.hide-sidebar {
+  position: relative;
+  left: 0;
+  top: 0;
+  transition: all 0.2s ease-in-out;
+  transform: rotate(0deg);
+}
+
+.new-chat {
+  flex: 1;
+  i {
+    margin-right: 13px;
+  }
+}
+
+.decom-text {
+  flex: 1;
+  padding: 12px 13px 12px 13px;
+}
+
+.conversations {
+  width: calc( 100% + 8px );
+  overflow-y: scroll;
+}
+
+.conversations,
+.conversations li {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.conversations li {
+  position: relative;
+}
+
+.conversations li .fa {
+  margin-right: 7px;
+}
+
+.conversations li > button {
+  width: 100%;
+  border: none;
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.file-explorer {
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-top: 3px;
+}
+
+.conversations li.active > button {
+  background: $color-main;
+}
+
+.edit-buttons {
+  display: none;
+  position: absolute;
+  right: 8px;
+  top: 0;
+}
+
+.conversations li:hover .edit-buttons {
+  display: flex;
+}
+
+.fade {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: $color-user-icon;
+  width: 40px;
+  height: 100%;
+  border-radius: 5px;
+  background: transparent;
+  background: linear-gradient(90deg, $color-secondary-fade 0%, $color-secondary 50%);
+}
+
+.conversations li.active .fade {
+  background: linear-gradient(90deg, $color-main-fade 0%, $color-main 50%);
+}
+
+.conversations li:hover .fade {
+  width: 80px;
+  background: linear-gradient(90deg, $color-button-hover-fade 0%, $color-button-hover 30%);
+}
+
+.edit-buttons button {
+  border: none;
+  padding: 0;
+  margin: 13px 1px 13px 1px;
+  opacity: 0.7;
+}
+
+.edit-buttons button:hover {
+  background: none;
+  opacity: 1;
+}
+
+.conversations li.grouping {
+  color: $color-groupings;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding-left: 13px;
+  margin-top: 12px;
+}
+
+i.user-icon {
+  padding: 6px;
+  color: $color-white;
+  background: $color-user-icon;
+  display: inline-block;
+  text-align: center;
+  width: 15px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-style: normal;
+  width: 18px;
+  height: 18px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: system-ui, sans-serif;
+}
+
+.gpt.user-icon  {
+  background: $color-gpt-icon;
+}
+
+
+.user-menu {
+  position: relative;
+  border-top: 1px solid $color-border1;
+}
+
+.user-menu button {
+  width: 100%;
+  border: none;
+}
+
+.user-menu .dots {
+  position: relative;
+  top: 11px;
+  float: right;
+  opacity: 0.7;
+}
+
+.user-menu > ul,
+.user-menu li {
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-menu > ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(-100%);
+  background: $color-black;
+  border-radius: 10px;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.show {
+  visibility: visible;
+}
+
+.noshow {
+  visibility: hidden;
+}
+
+.user-menu > ul.show-animate {
+  display: block;
+}
+
+.user-menu > ul.show {
+  opacity: 1;
+  margin-top: -8px;
+}
+
+.user-menu li button {
+  border-radius: 0;
+}
+
+.user-menu li button:hover {
+  background: $color-user-menu-hover;
+}
+
+.user-menu li:first-child button {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.user-menu li:last-child button {
+  border-top: 1px solid $color-user-menu-border;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background-color: ($color-text);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $color-text;
+  border-radius: 5px;
+}
+
+main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0 0 30px 0;
+  box-sizing: border-box;
+  .view {
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
+
+.model-selector {
+  position: relative;
+  border-radius: 11px;
+  background: $color-secondary;
+  display: flex;
+  padding: 4px;
+  gap: 4px;
+  margin: 24px auto;
+  z-index: 2;
+}
+
+.model-selector > button {
+  border-radius: 9px;
+  text-align: center;
+  width: 150px;
+  border: none;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.model-selector > button:hover {
+  background: none;
+  opacity: 1;
+}
+
+.model-selector > button.selected {
+  border: 1px solid $color-user-menu-selected-border;
+  background: $color-user-menu-hover;
+  opacity: 1;
+}
+
+.model-selector button .fa {
+  margin-right: 5px;
+}
+
+.gpt-3 .fa {
+  color: $color-gpt3;
+}
+
+.execute {
+  color: $color-execute;
+}
+
+.gpt-4 .fa {
+  color: $color-gpt4;
+}
+
+.model-info {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transform: translateY(100%);
+  padding: 15px;
+  cursor: default;
+}
+
+.Main-Text:hover + .model-info {
+  display: block;
+}
+
+.model-info-box {
+  padding: 20px 20px 10px 20px;
+  border-radius: 15px;
+  background: $color-secondary;
+  color: $color-white;
+  text-align: left;
+}
+
+.model-selector > button:hover .model-info {
+  display: block;
+}
+
+
+.model-selector p {
+  font-size: 1.1em;
+  margin: 0 0 15px 0;
+}
+
+p.secondary {
+  font-size: 1em;
+  color: $color-secondary-p;
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  color: $color-logo;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.8em;
+}
+
+#conversation-view {
+  display: none;
+  overflow-y: auto;
+}
+
+.model-name {
+  background: $color-main;
+  text-align: center;
+  color: $color-model-name;
+  padding: 23px;
+  border-bottom: 1px solid $color-border2;
+  font-size: 0.85em;
+}
+
+.message {
+  display: flex;
+  gap: 20px;
+  padding: 25px 60px 15px 60px;
+  border-bottom: 1px solid $color-border2;
+  font-size: 0.95em;
+}
+
+.message .content {
+  padding-top: 5px;
+}
+
+.user.message {
+  color: $color-text;
+}
+
+.assistant.message {
+  background: $color-assistant-bg;
+  color: $color-assistant-text;
+}
+
+#message-form {
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 850px;
+  text-align: center;
+  padding: 0px 45px 0 45px;
+  box-shadow: $color-main 0 0 50px;
+}
+
+.message-wrapper {
+  position: relative;
+}
+
+#message::placeholder {
+  color: $color-groupings;
+}
+
+#message {
+  background: $color-user-menu-hover;
+  border-radius: 13px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $color-user-message-border;
+  resize: none;
+  padding: 17px 85px 17px 15px;
+  font-family: inherit;
+  font-size: 1em;
+  color: $color-white;
+  box-shadow: rgba(0,0,0,0.2) 0 0 45px;
+  outline: none;
+}
+
+.disclaimer {
+  margin-top: 12px;
+  color: $color-disclaimer;
+  font-size: 0.7em;
+}
+
+.send-button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: $color-gpt3;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 1em;
+  padding: 7px 9px 7px 7px;
+  color: $color-white;
+  border: none;
+  margin-top: -2px;
+}
+
+button.send-button:hover {
+  border: none;
+  background: $color-gpt3;
+  color: $color-white;
+}
+
+p {
+  margin: 0 0 1.5em 0;
+}
+
+.task-list {
+  padding-left: 20px;
+}
+
+// @include mat.core();
+// @include mat.color-variants-backwards-compatibility($theme);
+.file-input {
+  display: none;
+}
+
+progress[value] {
+  --w: 244px; /* the width*/
+  --color:  /* the progress color */
+    linear-gradient(#fff8,#fff0),
+    repeating-linear-gradient(135deg,#0003 0 10px,#0000 0 20px),
+    /* if < 30% "red" */
+    linear-gradient(red    0 0) 0 /calc(var(--w)*.3 - 100%) 1px,
+    /* if < 60% "orange" */
+    linear-gradient(orange 0 0) 0 /calc(var(--w)*.6 - 100%) 1px,
+    /* else "green" */
+    green;
+  --background: lightgrey; /* the background color */
+  height: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: var(--w);
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 10em;
+  background: var(--color);
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 10em;
+  background: var(--color);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  font-weight: bold;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  padding: 0.25em 0.5em;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.25em;
+  white-space: normal;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0%;
+  transition-property: visibility;
+  transition-delay: 0s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

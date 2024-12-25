@@ -20,6 +20,13 @@ export const routes: Routes = [
             (m) => m.CalisthenicsComponent
           ),
       },
+      {
+        path: 'ctrlf',
+        loadComponent: () =>
+          import('./pages/components/ctrlf/ctrlf.component').then(
+            (m) => m.CtrlfComponent
+          ),
+      },
     ],
   },
 ];

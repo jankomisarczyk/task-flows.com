@@ -80,7 +80,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Piano',
             icon: 'pi pi-fw pi-heart',
-            routerLink: ['/hobby/piano'],
+            routerLink: ['/piano'],
           },
           {
             label: 'Calisthenics',
@@ -90,17 +90,17 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'Gym',
             icon: 'pi pi-fw pi-check-square',
-            routerLink: ['/sport/gym'],
+            routerLink: ['/gym'],
           },
           {
             label: 'Playlist',
             icon: 'pi pi-fw pi-headphones',
-            routerLink: ['/hobby/playlist'],
+            routerLink: ['/playlist'],
           },
           {
             label: 'Books',
             icon: 'pi pi-fw pi-book',
-            routerLink: ['/hobby/books'],
+            routerLink: ['/books'],
           },
         ],
       },

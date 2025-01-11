@@ -57,7 +57,7 @@ export class AppMenuComponent implements OnInit {
           {
             label: 'CTRL+F',
             icon: 'pi pi-fw pi-google',
-            routerLink: ['/blocks'],
+            routerLink: ['/ctrlf'],
             badge: 'NEW',
           },
           {

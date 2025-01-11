@@ -1,4 +1,4 @@
-module keywords
+module limitless.task-flows.com/keywords
 
 go 1.21
 

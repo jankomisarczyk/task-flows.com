@@ -48,4 +48,4 @@ func GetKeywords(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//  Your AI is ready to Go. :)
+// Your AI is ready to Go. :)

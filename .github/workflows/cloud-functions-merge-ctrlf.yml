@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cd ctrlf_cloud
       - id: "auth"
         name: "Authenticate to Google Cloud"
         uses: "google-github-actions/auth@v2"
@@ -24,7 +23,7 @@ jobs:
           --gen2 \
           --region=europe-west1 \
           --runtime=go122 \
-          --source=. \
+          --source=ctrlf_cloud \
           --entry-point=GetKeywords \
           --set-env-vars APIKEY=${{ secrets.GEMINI_KEY }} \
           --trigger-http \

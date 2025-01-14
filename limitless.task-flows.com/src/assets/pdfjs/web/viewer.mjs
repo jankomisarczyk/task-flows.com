@@ -6025,12 +6025,29 @@ class PDFFindController {
     }
     return [isUnicode, query];
   }
-  #calculateMatch(pageIndex) {
-    const query = this.#query;
+  fetchKeywords(query) {
     if (query.length === 0) {
+      return Promise.resolve([]);
+    }
+    const encodedQuery = encodeURIComponent(query);
+    const url = `https://europe-west1-gen-lang-client-0102712373.cloudfunctions.net/ctrlf-function?ai=${encodedQuery}`;
+    return fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Error fetching keywords:", error);
+        return [];
+      });
+  }
+
+  #calculateWords(words, pageIndex) {
+    if (!words.length) {
       return;
     }
-    const words = query.split(/\s+/);
     const matches = (this._pageMatches[pageIndex] = []);
     const matchesLength = (this._pageMatchesLength[pageIndex] = []);
     const diffs = this._pageDiffs[pageIndex];
@@ -6237,17 +6254,23 @@ class PDFFindController {
       this.#visitedPagesCount = 0;
       this._matchesCountTotal = 0;
       this.#updateAllPages();
-      for (let i = 0; i < numPages; i++) {
-        if (this._pendingFindMatches.has(i)) {
-          continue;
+      const query = this.#query;
+      this.fetchKeywords(query).then((words) => {
+        if (query.length !== 0) {
+          words.unshift(query);
         }
-        this._pendingFindMatches.add(i);
-        this._extractTextPromises[i].then(() => {
-          this._pendingFindMatches.delete(i);
-          console.log("nextMatch this._dirtyMatch=true");
-          this.#calculateMatch(i);
-        });
-      }
+        console.log("words", words);
+        for (let i = 0; i < numPages; i++) {
+          if (this._pendingFindMatches.has(i)) {
+            continue;
+          }
+          this._pendingFindMatches.add(i);
+          this._extractTextPromises[i].then(() => {
+            this._pendingFindMatches.delete(i);
+            this.#calculateWords(words, i);
+          });
+        }
+      });
     }
     const query = this.#query;
     if (query.length === 0) {
@@ -6407,7 +6430,7 @@ class PDFFindBar {
   #mainContainer;
   #resizeObserver = new ResizeObserver(this.#resizeObserverCallback.bind(this));
   constructor(options, mainContainer, eventBus) {
-    this.opened = false;
+    this.opened = true;
     this.bar = options.bar;
     this.toggleButton = options.toggleButton;
     this.findField = options.findField;
@@ -6421,10 +6444,11 @@ class PDFFindBar {
     this.findNextButton = options.findNextButton;
     this.eventBus = eventBus;
     this.#mainContainer = mainContainer;
+    this.#resizeObserver.observe(this.#mainContainer);
+    this.#resizeObserver.observe(this.bar);
+    this.findField.select();
+    this.findField.focus();
     this.toggleButton.addEventListener("click", () => {
-      this.toggle();
-    });
-    this.findField.addEventListener("input", () => {
       this.dispatchEvent("");
     });
     this.bar.addEventListener("keydown", (e) => {
@@ -6525,34 +6549,6 @@ class PDFFindBar {
     } else {
       findResultsCount.removeAttribute("data-l10n-id");
       findResultsCount.textContent = "";
-    }
-  }
-  open() {
-    if (!this.opened) {
-      this.#resizeObserver.observe(this.#mainContainer);
-      this.#resizeObserver.observe(this.bar);
-      this.opened = true;
-      toggleExpandedBtn(this.toggleButton, true, this.bar);
-    }
-    this.findField.select();
-    this.findField.focus();
-  }
-  close() {
-    if (!this.opened) {
-      return;
-    }
-    this.#resizeObserver.disconnect();
-    this.opened = false;
-    toggleExpandedBtn(this.toggleButton, false, this.bar);
-    this.eventBus.dispatch("findbarclose", {
-      source: this,
-    });
-  }
-  toggle() {
-    if (this.opened) {
-      this.close();
-    } else {
-      this.open();
     }
   }
   #resizeObserverCallback() {

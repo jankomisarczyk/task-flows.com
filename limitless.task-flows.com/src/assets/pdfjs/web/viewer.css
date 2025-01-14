@@ -3857,7 +3857,8 @@ body.wait::before{
   }
 
 .doorHanger{
-  inset-inline-start:calc(50% - var(--doorhanger-height) - 1px);
+  inset-block-start:calc(var(--doorhanger-height) - 10px);
+  inset-inline-start:calc(100% + var(--doorhanger-height));
 }
 
 .doorHanger::before{
@@ -4038,6 +4039,10 @@ body.wait::before{
   border-bottom:none;
   height:0;
   width:100%;
+}
+
+#previous, #next, #pageNumber, #numPages, #toolbarViewerMiddle, #toolbarViewerRight {
+  display: none !important;
 }
 
 .toggleButton{

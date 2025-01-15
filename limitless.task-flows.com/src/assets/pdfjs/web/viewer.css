@@ -3878,6 +3878,41 @@ body.wait::before{
   outline:none;
 }
 
+#snackbar {
+  visibility: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 250px;
+  background-color: #333;
+  color: #bdaef3;
+  text-align: center;
+  border-radius: 20px;
+  padding-right: 6px;
+  position: fixed;
+  z-index: 1;
+  left: 40%;
+  bottom: 30px;
+  max-width: 30%;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
 .dialogButton:is(:hover, :focus-visible){
   background-color:var(--dialog-button-hover-bg-color);
 }

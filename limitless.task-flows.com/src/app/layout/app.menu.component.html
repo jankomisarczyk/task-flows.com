@@ -1,0 +1,15 @@
+<ul class="layout-menu">
+    <div class="layout-menu-logo">
+        <p-image src="assets/layout/images/jan-komisarczyk.jpg" alt="Logo" [preview]="true"></p-image>
+        <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+            <i class="pi pi-arrow-left"></i>
+        </button>
+    </div>
+    <div class="layout-menu-title">
+        <span>Jan Komisarczyk</span>
+    </div>
+    <ng-container *ngFor="let item of model; let i = index;">
+        <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
+        <li *ngIf="item.separator" class="menu-separator"></li>
+    </ng-container>
+</ul>

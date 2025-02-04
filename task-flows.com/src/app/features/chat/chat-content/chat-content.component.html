@@ -1,0 +1,80 @@
+<div
+  id="chat-content-container"
+  class="flex justify-between min-h-screen flex-col md:pl-[320px]"
+>
+  @if (messages.length > 0) {
+    <div id="mainChatContainer" >
+      @for (message of messages; track message) {
+        <div class="mx-5 text-white">
+          @if (message.content !== null) {
+            <div
+            [class]="
+              'flex items-start p-5 ' +
+              (message.role === 'user' ? 'bg-[#40414E]' : '')
+            ">
+            <img
+              height="50"
+              width="50"
+              [src]="
+                message.role === 'assistant'
+                  ? '../../assets/img/chatgpt.jpg'
+                  : '../../assets/img/user.png'
+              "
+              class="rounded-full mr-10"
+              alt="user_photo"
+            />
+            <div class="align-middle">
+              <div class="prose prose-invert" [innerHTML]="message.content"></div>
+            </div>
+          </div>
+          }
+        </div>
+      }
+    </div>
+  }
+  @if (messages.length === 0) {
+    <div [class]="'justify-center flex items-center p-5'">
+      @if (apiKey) {
+        <h1 [class]="'text-white'">
+          Please start typing some prompt...
+        </h1>
+      }
+      @if (apiKey === null || apiKey === '') {
+        <h1 [class]="'text-white'">
+          Please enter your API Key...
+        </h1>
+      }
+    </div>
+  }
+  <div class="flex mx-5 p-4">
+    <textarea
+      class="w-full p-3 bg-[#40414E] text-white rounded-l-md resize-none focus:outline-none"
+      placeholder="Type something..."
+      rows="1"
+      name="textInput"
+      #textInput
+      (keyup.enter)="createCompletion(textInput)"
+      [disabled]="apiKey === null || apiKey === ''"
+    ></textarea>
+    <button
+      [disabled]="apiKey === null || apiKey === ''"
+      class="bg-[#40414E] p-3 rounded-r-md"
+      type="button"
+    >
+      @if (isBusy === false) {
+        <i
+        (click)="createCompletion(textInput)"
+        class="fa-regular fa-paper-plane text-white"
+      ></i>
+      }
+      @if (isBusy === true) {
+        <div
+        class="inline-block h-5 w-5 text-white animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+      }
+    </button>
+  </div>
+</div>

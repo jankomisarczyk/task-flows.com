@@ -1,0 +1,44 @@
+#IKIGAI {
+    position: relative;
+    padding-bottom: 100px;
+
+    .background {
+        grid-template: 3fr 1fr 2fr / 3fr 1fr 1fr 1fr 1fr;
+        display: grid;
+        z-index: 1;
+        width: 100%;
+
+        video {
+            width: 100%;
+            height: 100%;
+            grid-area: 1 / 1 / 4 / 6;
+            object-fit: cover;
+        }
+        .ikigai {
+            grid-area: 2 / 1 / 3 / 2;
+            @media (max-width: 991px) {
+                grid-area: 2 / 1 / 3 / 5;
+            }
+            overflow: hidden;
+            z-index: 1;
+            padding-left: 15px;
+            img {
+                max-width: 100%;
+                height: 100%;
+            }
+        }
+        .ikigai-japanese {
+            grid-area: 1 / 5 / 2 / 6;
+            height: 40svh;
+            align-self: end;
+            justify-self: left;
+            z-index: 1;
+            margin: 0 15px 15px 0;
+            img {
+                 height: 75%;
+            }
+        }
+    }
+
+
+}

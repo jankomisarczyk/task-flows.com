@@ -1,0 +1,30 @@
+name: Deploy Cloud Run Functions
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "ctrlf_cloud/**"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v2"
+        with:
+          credentials_json: "${{ secrets.GCP_SA_DEPLOY_KEY }}"
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v2"
+      - name: "Deploy to gen2 cloud function"
+        run: |
+          gcloud functions deploy ctrlf-function \
+          --gen2 \
+          --region=europe-west1 \
+          --runtime=go122 \
+          --source=ctrlf_cloud \
+          --entry-point=GetKeywords \
+          --set-env-vars APIKEY=${{ secrets.GEMINI_KEY }} \
+          --trigger-http \
+          --allow-unauthenticated

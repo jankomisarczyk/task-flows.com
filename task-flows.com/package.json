@@ -1,0 +1,51 @@
+{
+  "name": "task-flows.com",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "serve:ssr:task-flows.com": "node dist/task-flows.com/server/server.mjs"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/platform-browser": "^18.0.0",
+    "@angular/platform-browser-dynamic": "^18.0.0",
+    "@angular/platform-server": "^18.0.1",
+    "@angular/router": "^18.0.0",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "firebase": "^10.12.4",
+    "ngx-markdown": "^18.0.0",
+    "ngx-progressbar": "^11.1.0",
+    "ngx-toastr": "^19.0.0",
+    "rxfire": "^6.0.5",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.2",
+    "uuidv4": "^6.2.13",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.2",
+    "@angular/cli": "^18.0.2",
+    "@angular/compiler-cli": "^18.0.0",
+    "@angular/docs": "https://github.com/angular/dev-infra-private-docs-builds.git#75c4b2d7c6bc19a35d044b42364f95ac52d7750b",
+    "@types/jasmine": "~5.1.0",
+    "firebase-tools": "^13.13.3",
+    "gsap": "^3.12.3",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ogl": "^1.0.3",
+    "typescript": "~5.4.2"
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Limitless</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- I need to redefine css assets -->
+    <!-- <link href="https://assets-global.website-files.com/6618c3e400e0a22e8fc6b657/css/ikigai-template.webflow.430957ca8.css" rel="stylesheet" type="text/css"/> -->
+    <!-- <link id="theme-css" rel="stylesheet" type="text/css" href="assets/layout/styles/theme.css"> -->
+  </head>
+  <body>
+    <app-root></app-root>
+    <script>
+      ScrollReveal().reveal(".post__title", {
+        delay: 500,
+        origin: "left",
+        reset: true,
+        duration: 2500,
+        distance: "60px",
+      });
+      ScrollReveal().reveal(".image-box", {
+        delay: 500,
+        origin: "bottom",
+        reset: true,
+        duration: 2500,
+        distance: "60px",
+      });
+      ScrollReveal().reveal(".post__content", {
+        delay: 500,
+        origin: "right",
+        reset: true,
+        duration: 2500,
+        distance: "60px",
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+name: Deploy Limitless Task Flows
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "limitless.task-flows.com/**"
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cd limitless.task-flows.com && npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIMITLESS_TASK_FLOWS_COM }}
+          channelId: live
+          projectId: limitless-task-flows-com
+          entryPoint: limitless.task-flows.com
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks

@@ -56,13 +56,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'playlist',
-        loadComponent: () =>
-          import('./pages/components/playlist/playlist.component').then(
-            (m) => m.PlaylistComponent
-          ),
-      },
-      {
         path: 'books',
         loadComponent: () =>
           import('./pages/components/books/books.component').then(

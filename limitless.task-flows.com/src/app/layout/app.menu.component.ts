@@ -80,11 +80,6 @@ export class AppMenuComponent implements OnInit {
             routerLink: ['/calisthenics'],
           },
           {
-            label: 'Playlist',
-            icon: 'pi pi-fw pi-headphones',
-            routerLink: ['/playlist'],
-          },
-          {
             label: 'Books',
             icon: 'pi pi-fw pi-book',
             routerLink: ['/books'],
